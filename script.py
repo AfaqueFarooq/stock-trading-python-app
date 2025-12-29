@@ -2,14 +2,15 @@
 import requests
 import os
 from dotenv import load_dotenv
-load_dotenv()
 import time
 import csv
 
-POLYGON_API_KEY = os.getenv("POLYGON_API_KEY")
+load_dotenv()
+
+MASSIVE_API_KEY = os.getenv("MASSIVE_API_KEY")
 
 LIMIT = 1000
-url = f'https://api.massive.com/v3/reference/tickers?market=stocks&active=true&order=asc&limit={LIMIT}&sort=ticker&apiKey={POLYGON_API_KEY}'
+url = f'https://api.massive.com/v3/reference/tickers?market=stocks&active=true&order=asc&limit={LIMIT}&sort=ticker&apiKey={MASSIVE_API_KEY}'
 
 # schema
 FIELDS = {
@@ -41,9 +42,9 @@ for ticker in data['results']:
 # pagination
 while 'next_url' in data:
     print('requesting next page',data['next_url'])
-    time.sleep(12)  # To respect rate limits as we using free tier of Polygon API
+    time.sleep(12)  # To respect rate limits as we using free tier of Massive API
     response = requests.get(
-        data['next_url'] + f'&apiKey={POLYGON_API_KEY}'
+        data['next_url'] + f'&apiKey={MASSIVE_API_KEY}'
         )
     data = response.json()
     print(data)
