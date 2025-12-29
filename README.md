@@ -1,2 +1,2 @@
 # stock-trading-python-app
-This uese the Polygob.io API to extract data about stocks
+This uese the Massive.io API to extract data about stocks
