@@ -31,9 +31,9 @@ FIELDS = {
 fieldnames = list(FIELDS.keys())
 csv_file = "tickers.csv"
 
+tickers = []
 # first request
 response = requests.get(url)
-tickers = []
 
 data = response.json()
 for ticker in data['results']:
